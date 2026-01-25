@@ -1,1 +1,1 @@
-# WebDev_Spring26_NYU
+# Sihyun_SP26_WebDev
