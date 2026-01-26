@@ -3,6 +3,7 @@ Learn How to Make Classic Steak Tartare (Beef Tartare) at home. Meaty, bold, and
 <br/>
 
 **Brief Description**
+<br/>
 *A classic French-inspired raw beef dish made with finely chopped steak, bold seasonings, and traditional accompaniments.*
 <br/>
 
@@ -25,7 +26,6 @@ Learn How to Make Classic Steak Tartare (Beef Tartare) at home. Meaty, bold, and
 - **1 ½ tablespoons dijon mustard**
 - **½ teaspoon kosher salt**, or more to taste if needed
 - **2 egg yolks**, fresh
-<br/>
 
 ### Serve Alongside with
 
@@ -41,13 +41,13 @@ Learn How to Make Classic Steak Tartare (Beef Tartare) at home. Meaty, bold, and
 1. Place beef on a small plate. Freeze until firmed up slightly, about 20 minutes. 
 2. Cut chilled beef into ¼-inch slices, then into ¼ inch strips and then finely chop it with a sharp knife.
 3. Place on a plate and refrigerate while you prep the rest.
-<br/>
+
 
 
 ### Step 2: Mix the Seasonings
 1. Chop the capers, cornichons, shallots, and parsley into a fine dice.
 2. Add to a mixing bowl and add Worcestershire sauce and mustard. Toss to combine.
- <br/>
+
 
 
 
@@ -56,20 +56,20 @@ Learn How to Make Classic Steak Tartare (Beef Tartare) at home. Meaty, bold, and
 2. Gently fold everything together.
 3. Season with salt to taste.
 4. Keep the mixture chilled until ready to serve.
-<br/>
+
 
 
 ### Step 4: Shape and Plate
 1. Press the tartare into a round mold or ramekin.
 2. Divide into two portions.
 3. Add onto two plates.
-<br/>
+
 
 
 ### Step 5: Finish with Egg Yolk
 1. Make a small well in the center. 
 2. Gently add the egg yolk into each portion.
-<br/>
+
 
 
 ### Step 6: Serve
