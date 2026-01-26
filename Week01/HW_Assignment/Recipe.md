@@ -1,4 +1,5 @@
-# Classic Beef Tartare
+# Classic Beef Tartare Recipe
+<br/>
 
 > *A classic French-inspired raw beef dish made with finely chopped steak, bold seasonings, and traditional accompaniments.*
 <br/>
