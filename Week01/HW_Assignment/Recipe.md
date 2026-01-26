@@ -4,6 +4,7 @@
 > *A classic French-inspired raw beef dish made with finely chopped steak, bold seasonings, and traditional accompaniments.*
 
 Learn How to Make Classic Steak Tartare (Beef Tartare) at home. Meaty, bold, and delicious, you’ll love this elegant dish for dinner parties or weeknight meals. Completely safe to eat and no cooking required!
+<br/>
 
 ---
 
