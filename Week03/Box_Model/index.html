@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple Navbar | Inline-Block</title>
+    <!-- Internal style sheet! -->
+    <style type="text/CSS">
+      /* universal selector is always the first style,
+      you want a massive reset or default which you
+      overwrite with more specific styles further down */
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Courier New', Courier, monospace;
+      }
+
+      ul {
+        /* remove all bullet points */
+        list-style-type: none;
+        overflow: hidden;
+        background-color: rgb(237, 136, 100);
+        /*
+        make the parent element's font size 0 when using inline block to get
+        rid of the tiny annoying space between letters (because inline is usually for text)
+         */
+        font-size: 0;
+      }
+
+      li {
+        /* li display BLOCK by default. they dont want to share horiontal space with other elements */
+        /* we are making these LIs display inline-block which allows us to size elements like a blo9ck element
+        but we can also stack elements horizontally like an inline element */
+        display: inline-block;
+        font-size: 1rem;
+        /* width: 200px; */
+      }
+
+      /* decendant selector - looks for a pattern of elements on the page*/
+      /* this is looking for only the anchor tags inside of a LI  */
+      li a {
+        /* making an inline element display block will make it fill the space of the parent element */
+        display: block;
+        text-align: center;
+        /* make it big and chunky like a button */
+        width: 100px;
+        padding: 10px;
+        /* padding-top: 50px; */
+        /* Remove all of that default link styling */
+        color: chartreuse;
+        text-decoration: none;
+      }
+
+      /* highlight the active page in the menu */
+      .active {
+        background-color: cornflowerblue;
+      }
+
+      /* pseudo class selector */
+      li a:hover {
+        background-color: cyan;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Link 1</a></li>
+          <li>
+            <a class="active" href="#">Link 2</a>
+          </li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+        </ul>
+      </nav>
+    </header>
+  </body>
+</html>
