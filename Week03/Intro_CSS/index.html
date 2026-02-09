@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
+    <title>Intro to CSS Text and Spans</title>
+    <!--this is how you write an interanl style sheet-->
+    <!--These styles apply only to this page thy are defined in-->
+    <style type="text/CSS">
+      /* universal selector to zero out the default margins on everything on the */
+
+      *{
+        margin: 0;
+        font-family:Arial, Helvetica, sans-serif;
+      }
+
+      /* tag selectors apply to every instance of a tag on the page*/
+      h2{
+        color: blueviolet;
+        background-color: darkgreen;
+
+        color: #ff0000;
+        background-color: #74ef7485;
+
+        color: rgb(0,0,120);
+        background-color: rgba(0,0,120,0.5);
+      }
+
+
+      .align_right{
+        width: 50%;
+        text-align: right;
+      } 
+
+      .align_justified{
+        text-align: justify;
+      }
+
+      .silly_text{
+        font-family: fantasy;
+      }
+
+      /*ID sectors begin ith # */
+      #really_important{
+        /* font weights only work if they are supported.*/
+        font-weight: bold;
+        font-size: xx-large;
+      }
+    </style>
+   </head>
+  
+   <body>
+    <!--inline styling this will override any stylesheets above-->
+    <h1 style="margin: 20px 10px 5px 5px; margin-top: 50px;"> Heading 1 Displays Block</h1>
+    <h2>Remember only 1 h1 per page</h2>
+    <p class="align_right">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eleifend nisi vitae ligula consectetur tristique. 
+      Integer leo nibh, porta quis libero eget, fermentum sollicitudin ante. Etiam sit amet massa sit amet massa elementum vestibulum. 
+      Sed nec ante vulputate, 
+      <span class="silly_text">
+        dignissim mi in, consectetur libero. Maecenas diam lorem, condimentum nec aliquam non, sodales in leo. 
+        Donec scelerisque nunc et lectus pretium dignissim. Morbi ut odio non odio viverra semper. Vestibulum ante ipsum primis in faucibus 
+      </span>
+      orci luctus et ultrices posuere cubilia curae; Nam maximus neque odio, at vulputate eros efficitur id. Pellentesque tincidunt elit a lectus tincidunt, 
+      ac rutrum risus lacinia. Etiam auctor placerat finibus. Phasellus eleifend massa at ex euismod, non pretium ligula semper.
+    </p>
+
+    <p id="really_important" class="allign_justified">
+      amet, consectetur adipiscing elit. Sed eleifend nisi vitae ligula consectetur tristique. 
+      Integer leo nibh, porta quis libero eget
+    </p>
+  </body>
+</html>
