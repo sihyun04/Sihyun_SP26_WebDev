@@ -1,0 +1,14 @@
+/*always load custom fonts and other depdencies (like other stylestheets or css vars) first*/
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+/*Universal selector to reet some defaults*/
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* this is how we get a full size NEW image background*/
+html{
+    background: url('../img/bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+}

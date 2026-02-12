@@ -1,0 +1,46 @@
+/* We always load our fonts and css variables */
+/* Then declare the most generic and global sytles */
+
+html,
+body{
+  margin: 0;
+}
+
+/* Generic styles so that we can see our div elements and how they nest*/
+div,
+header{
+    /*border shorthand- assign 3 values at onee:width:
+    border-width border-style border-color */
+    border: 1px solid red;
+    padding: 10px;
+}
+
+/* Absolute positioned elements without a positioned parent
+will be positioned ancestor will be positioned in relation
+the entire brower window*/
+.abs-no-parent{
+    background-color: cornflowerblue;
+    position: absolute; 
+    top: 20%;
+    right: 100px
+}
+
+.rel-parent{
+    background-color: blueviolet;
+    width: 50%;
+    /*height positions dont exactly work as you'd think. Unless theres a parent
+    element with a set height (in pixels or rem)*/
+    /* viewport height snf viewprot width assign heights in pixels based on % 
+    height: 100vh;*/
+    position: relative;
+}
+
+.abs-rel-parent{
+    background-color: rgb(12, 237, 16);
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: 100px;
+    right: 0;
+
+}
