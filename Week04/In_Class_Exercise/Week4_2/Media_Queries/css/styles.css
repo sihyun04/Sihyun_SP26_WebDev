@@ -1,0 +1,38 @@
+/*Global Styles First*/
+/*This example will use Desktop First Styling
+Desktop first= default styles are writtent for desktorp/laptop screens
+media queires will go from large to smaller screens*/
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin:0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+img{
+    width: 100%;
+    height: auto;
+}
+
+.thumb{
+    width : 25%;
+}
+
+/*border box means dimension you put for width or height
+includes the padding and the border
+
+content box  means the width an dheight apply to the content box : only
+and border and padding widths will add to the width and height final dimension*/
+
+/*
+#box_sizer{
+    width: 200px;
+    height: 200px;
+    border: 1px solid green;
+    padding: 20px;
+    background-color: rgba(0,0,200,0.3);
+}
+    */
