@@ -1,0 +1,58 @@
+/* always load custom fonts and other depdendencies
+(like other stylesheets or CSS vars) first */
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+/* Universal selector to reset some defaults */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* this is how we get a full size H&W image background */
+html {
+  background: url('../img/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* apply the default font styles to the body so
+all other elements within can inherit them */
+body {
+  font-family: 'Kaushan Script', cursive;
+}
+
+.container {
+  width: 900px;
+  margin: 0 auto;
+  /* since the poloaroid divs are going to display inline block
+  we need to zero out the font size her on the parent element to avoid
+  some extra half pixel spacing that accumulates */
+  font-size: 0;
+}
+
+.polaroid {
+  width: 260px;
+  margin: 20px;
+  display: inline-block;
+  /* this is the parent element we want to absolute position elements within */
+  position: relative;
+}
+
+/* this looks for the pattern of img tags within a parent with a class of polaroid */
+.polaroid img {
+  /* with images we usually make them take up 100%
+  width of a parent element which we size */
+  width: 100%;
+  /* height auto keeps the pixel aspect ratio as the image with scales to fit parent */
+  height: auto;
+  border: 10px solid #ccc;
+  border-bottom-width: 45px;
+}
+
+.polaroid p {
+  position: absolute;
+  bottom: 5px;
+  width: 280px;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #333;
+}
