@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+#box_model,
+#content_box {
+  height: 200px;
+  width: 200px;
+  border: 10px solid red;
+  padding: 20px;
+}
+
+#content_box {
+  box-sizing: content-box;
+}

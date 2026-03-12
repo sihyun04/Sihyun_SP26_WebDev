@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Responsive 101</title>
+    <link rel="stylesheet" type="text/css" href="./css/styles.css" />
+    <script type="text/javascript">
+
+     // Write a function to add or remove the .show class
+     // see if iy has the class "show" already? if so, remove it
+     // if not, add it.
+
+    /*
+     // declare a function with the name toggleShow
+      function toggleShow(){
+        // grab our menu class ul and store it as a variable
+        var menu = document.getElementById('menu')
+        // log it in the console of google dev tools
+        console.log(menu)
+        // long way first, but more flexible moving forward
+        // does menu have the class name 'show' in its classList?
+        console.log(menu.classList)
+        // if our classList has the class remove it
+        if (menu.classList.contains('show')){
+          menu.classList.remove('show')
+        } else {
+          // otherwise add it
+          menu.classList.add('show')
+        }
+      }
+
+      // call the function
+      // toggleShow()
+
+      */
+
+      // This should begin 90% of your JS code for HTML
+      document.addEventListener('DOMContentLoaded', function() {
+        // code in here will fire once all of the HTML abd CSS on the page has loaded
+        // we do this so we don't try to select any elements on the page before they have rendered
+        document.getElementById('mobile-menu').addEventListener('click', toggleShow)
+      })
+
+      // grab the hamburger and add an click event listener to fire the toggleShow function
+      // these lines wont work because the content has not loaded yet. null cannot receive an event listener!
+      // you will see an error in console and non of the code after will execute
+      /*
+      document.getElementById('mobile-menu').addEventListener('click', toggleShow)
+
+      var hamburger = document.getElementById('mobile-menu')
+      hamburger.addEventListener('click', toggleShow)
+      */
+x
+      function toggleShow(){
+        var menu = document.getElementById('menu')
+        menu.classList.toggle('show')
+      }
+
+    </script>
+  </head>
+  <body>
+    <header>
+      <h1 class="brand"><a href="#">Logo</a></h1>
+      <!-- Hide this till we hit smaller screens! -->
+      <!-- Click Me to toggle the class ".show" on the ul.menu item -->
+      <!-- <span class="mobile-menu" id="mobile-menu" onclick="toggleShow()">&#8801;</span> -->
+      <span class="mobile-menu" id="mobile-menu" >&#8801;</span>
+      <nav>
+        <!-- receives/loses the show class on hamburger click -->
+        <ul class="menu" id="menu">
+          <li><a href="#">Link 1 </a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+          <li><a href="#">Link 5</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="thumb">
+        <img
+          src="./img/pepesilvia.jpg"
+          alt="Frazzled office worker inside messy cubicle."
+        />
+      </div>
+      <div class="thumb">
+        <img
+          src="./img/pepesilvia.jpg"
+          alt="Frazzled office worker inside messy cubicle."
+        />
+      </div>
+      <div class="thumb">
+        <img
+          src="./img/pepesilvia.jpg"
+          alt="Frazzled office worker inside messy cubicle."
+        />
+      </div>
+      <div class="thumb">
+        <img
+          src="./img/pepesilvia.jpg"
+          alt="Frazzled office worker inside messy cubicle."
+        />
+      </div>
+
+      <div class="thumb">
+        <img
+          src="./img/pepesilvia.jpg"
+          alt="Frazzled office worker inside messy cubicle."
+        />
+      </div>
+      <div class="thumb">
+        <img
+          src="./img/pepesilvia.jpg"
+          alt="Frazzled office worker inside messy cubicle."
+        />
+      </div>
+      <div class="thumb">
+        <img
+          src="./img/pepesilvia.jpg"
+          alt="Frazzled office worker inside messy cubicle."
+        />
+      </div>
+      <div class="thumb">
+        <img
+          src="./img/pepesilvia.jpg"
+          alt="Frazzled office worker inside messy cubicle."
+        />
+      </div>
+    </main>
+
+  </body>
+</html>

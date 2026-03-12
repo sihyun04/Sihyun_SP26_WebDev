@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CSS Only Modal</title>
+    <!-- Internal Stylesheet -->
+    <style type="text/css">
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      a.button {
+        text-decoration: none;
+        color: white;
+        background-color: blueviolet;
+        padding: 1rem 2rem;
+        border-radius: .5rem;
+        display: inline-block;
+      }
+
+      .info_modal {
+        /* stretch a div to cover the entire screen */
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right:0;
+        /* transparent gray bg*/
+        background-color: rgba(0,0,0,0.5);
+        /* make super super sure that t is in front of all of our other content!*/
+        z-index: 99999;
+        /* starting state of 0% opacity*/
+        opacity: 0;
+        /* make sure the content behind the overlay is not clickable */
+        pointer-events: none;
+        transition: opacity 400ms ease;
+      }
+
+      .info_modal:target{
+        opacity: 1;
+        pointer-events: auto;
+      }
+      /* the > means only direct descendants (not grandchildren) divs will be targeted */
+      .info_modal > div {
+        width: 600px;
+        height: 600px;
+        margin: 10% auto;
+        position: relative;
+        padding: 2rem;
+        border-radius: .75rem;
+        background-color: white;
+
+      }
+
+      .close {
+        height: 20px;
+        width: 20px;
+        background-color: whitesmoke;
+        color: black;
+        position: absolute;
+        top: 0;
+        right: 0;
+        text-decoration: none;
+        transition: all 1s ease;
+        text-align: center;;
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- anchor tag targets another element on the page with a specific ID -->
+    <!-- We will use CSS to make links look like buttons -->
+    <a href="#info" class="button">Link to Modal 1</a>
+
+    <!-- Begin Modal 1-->
+    <!-- Parent/Wrapper div which receives the ID that needs to be targeted -->
+    <!-- This div will also be our transparent overlay -->
+    <div id="info" class="info_modal">
+      <!-- this is out box within the overlay...the popup window -->
+      <div>
+        <a href="#close" class="close">X</a>
+        <h1>Modal 1</h1>
+        <p>Here is some content for Modal 1</p>
+      </div>
+        
+    </div>
+    <!-- End Modal 1 -->
+  </body>
+</html>

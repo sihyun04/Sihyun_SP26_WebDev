@@ -1,0 +1,176 @@
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+}
+
+/* Zero out the annoying default margins */
+html,
+body {
+    margin: 0;
+}
+
+/* scale the images to fit their parent container */
+img {
+    width: 100%;
+    height: auto;
+}
+
+/* Desktop First Styling */
+
+/* JUMBOTRON */
+div.hero {
+    width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.hero article {
+    position: absolute;
+    bottom: 20%;
+    right: 0;
+    width: 50%;
+    padding: 2%;
+    background: linear-gradient(to right,  rgba(30,87,153,1) 0%,rgba(125,185,232,0) 100%);
+}
+
+button,
+a.info {
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    background-color: #333;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    /* Transitions get applies here at the base state of an element (base = what the default style is when you load the page */
+    transition: all 1s ease;
+    width: 10rem;
+}
+
+button:hover,
+a.info:hover {
+    background-color: chartreuse;
+    color: #333;
+    /* text-transform: lowercase; */
+    
+}
+
+/* GALLERY */
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.thumb {
+    position: relative;
+    overflow: hidden;
+    flex: 0 0 30%;
+    /*
+    flex-grow: 0; don't get any bigger, stay at basis size
+    flex-grow: 1; yes grow at the normal rate
+    flex-grow: 2; yes grow at 2x the normal rate
+
+    flex-basis: size and unit; think of it like setting the default width
+    */
+    margin: 1.5rem auto;
+}
+
+/* prepare the img initial state for transforms */
+.thumb img{
+    transform: scale(1);
+    transform: rotate(0deg);
+    transition: all 1s ease;
+}
+
+/* Image transforms on hover */
+.thumb:hover img {
+    transform: scale(1.5) rotate(-20deg);
+}
+
+.mask {
+    /* position/stretch each edge to its parents edges */
+    position:absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* quick way to center in both axis */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s ease;
+    opacity: 0;
+    pointer-events: all;
+    background-color: rgba(255,255,255,0.5);
+}
+
+.mask h2 {
+    margin: 0;
+}
+
+.mask p {
+    font-style: italic;
+}
+
+.thumb:hover .mask {
+    opacity: 1;
+}
+
+.thumb .mask h2,
+.thumb .mask p,
+.thumb .mask a {
+    opacity: 0;
+    transform: scale(0);
+    transition: all 1s ease-in-out;
+}
+
+.thumb:hover .mask h2,
+.thumb:hover .mask p,
+.thumb:hover .mask a {
+    opacity: 1;
+    transform: scale(1.25);
+}
+
+/* MEDIA QUERIES */
+
+/* Tablet Landscape */
+@media screen and (width <= 1024px) {
+    .hero article{
+        width: 80%;
+    }
+
+    .thumb {
+        flex-basis: 45%;
+    }
+}
+
+/* Smaller than an Ipad Classic AKA Phone */
+@media screen and (width < 768px) {
+
+    .hero article {
+        width: 100%;
+        bottom: 1%;
+        padding: 1.5rem;
+    }
+    .container {
+        flex-direction: column;
+        padding: 0.75rem;
+    }
+
+
+}
+
+
+
+
+
+

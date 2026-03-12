@@ -1,0 +1,92 @@
+/*Global Styles*/
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+img{
+    /*Scale to all the width of the parent element*/
+    width: 100%;
+    /*preserves the pixel aspect ratio*/
+    height: auto;
+}
+
+/*Flexbox simple row layouts*/
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*Some more properties so we can see our divs*/
+    border: 1px solid purple;
+    background-color: rgba(255,0,255,0.3);
+    min-height: 400px;
+}
+
+.item{
+    border: 1px solid cornflowerblue;
+    background-color: rgba(0,0,255,0.3);
+    width: 23%;
+    height: 300px;
+}
+
+/*Atomic Css Design Pattern*/
+.center{
+    display: flex;
+    /*horizontal distribution*/
+    justify-content: center;
+    /*vertical alignment*/
+    align-items: center;
+}
+
+.justify-start{
+    justify-content: flex-start;
+}
+
+.justify-end{
+    justify-content: flex-end;
+}
+
+.justify-between{
+    justify-content:space-between;
+}
+
+.justify-around{
+    justify-content: space-around;
+}
+
+.justify-even{
+    justify-content: space-evenly;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.align-start{
+    align-items: flex-start;
+}
+
+.align-end{
+    align-items: end;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.align-stretch{
+    align-items: stretch;
+}
+
+.self-stretch{
+    align-items: stretch;
+    height: auto;
+}
+
+
+/*Classic Layout Example*/
