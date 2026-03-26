@@ -7,39 +7,8 @@ const homeProjectCards = document.querySelectorAll(
 );
 const menuToggleButton = document.querySelector(".menu-toggle");
 const headerNavLinks = document.querySelectorAll(".header nav a");
-const THEME_STORAGE_KEY = "portfolio-theme";
-
-// Create the floating color mode button and keep the selected mode saved.
-function initThemeToggle() {
-  const root = document.documentElement;
-  const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
-  const initialTheme = savedTheme === "light" ? "light" : "dark";
-
-  root.setAttribute("colormode", initialTheme);
-
-  const button = document.createElement("button");
-  button.className = "modechange";
-  button.type = "button";
-  button.setAttribute("aria-label", "Toggle color mode");
-
-  const setButtonState = (theme) => {
-    const isLight = theme === "light";
-    button.textContent = isLight ? "Light" : "Dark";
-    button.setAttribute("aria-pressed", String(isLight));
-  };
-
-  setButtonState(initialTheme);
-
-  button.addEventListener("click", () => {
-    const currentTheme = root.getAttribute("colormode") === "light" ? "light" : "dark";
-    const nextTheme = currentTheme === "light" ? "dark" : "light";
-    root.setAttribute("colormode", nextTheme);
-    localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
-    setButtonState(nextTheme);
-  });
-
-  document.body.appendChild(button);
-}
+const MOBILE_BREAKPOINT = 768;
+const MOBILE_TAP_DELAY_MS = 320;
 
 // Add or remove the scrolled class so the header can change appearance on scroll.
 function toggleHeaderBackground() {
@@ -68,62 +37,43 @@ function initHeroBackgroundSlider() {
   const slideInterval = 3000;
 
   setInterval(() => {
-    document.body.classList.add("hero-transitioning");
     heroBackgroundImage.classList.add("is-fading");
 
     setTimeout(() => {
       currentIndex = (currentIndex + 1) % imageList.length;
       heroBackgroundImage.src = imageList[currentIndex];
       heroBackgroundImage.classList.remove("is-fading");
-      document.body.classList.remove("hero-transitioning");
     }, fadeDuration);
   }, slideInterval);
 }
 
-// On mobile, show a brief pressed state before navigating from explore cards.
-function initMobileExploreCardTap() {
-  if (!exploreCards.length) return;
+// On mobile, show a brief pressed state before navigating from project cards.
+function initMobilePreviewTap(cards) {
+  if (!cards.length) return;
 
-  exploreCards.forEach((card) => {
+  cards.forEach((card) => {
     card.addEventListener("click", (event) => {
-      if (window.innerWidth >= 768) return;
+      if (window.innerWidth >= MOBILE_BREAKPOINT) return;
 
       const href = card.getAttribute("href");
       if (!href) return;
 
       event.preventDefault();
 
-      exploreCards.forEach((item) => item.classList.remove("is-armed"));
+      cards.forEach((item) => item.classList.remove("is-armed"));
       card.classList.add("is-armed");
 
       window.setTimeout(() => {
         window.location.href = href;
-      }, 320);
+      }, MOBILE_TAP_DELAY_MS);
     });
   });
 }
 
-// Mirror the same mobile tap behavior for the featured project cards.
-function initMobileHomeProjectTap() {
-  if (!homeProjectCards.length) return;
-
-  homeProjectCards.forEach((card) => {
-    card.addEventListener("click", (event) => {
-      if (window.innerWidth >= 768) return;
-
-      const href = card.getAttribute("href");
-      if (!href) return;
-
-      event.preventDefault();
-
-      homeProjectCards.forEach((item) => item.classList.remove("is-armed"));
-      card.classList.add("is-armed");
-
-      window.setTimeout(() => {
-        window.location.href = href;
-      }, 320);
-    });
-  });
+function closeMobileMenu() {
+  if (!header || !menuToggleButton) return;
+  header.classList.remove("menu-open");
+  menuToggleButton.setAttribute("aria-expanded", "false");
 }
 
 // Open, close, and reset the mobile navigation menu based on user actions.
@@ -138,35 +88,31 @@ function initMobileMenuToggle() {
   headerNavLinks.forEach((link) => {
     link.addEventListener("click", () => {
       if (!header.classList.contains("menu-open")) return;
-      header.classList.remove("menu-open");
-      menuToggleButton.setAttribute("aria-expanded", "false");
+      closeMobileMenu();
     });
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 768 && header.classList.contains("menu-open")) {
-      header.classList.remove("menu-open");
-      menuToggleButton.setAttribute("aria-expanded", "false");
+    if (window.innerWidth > MOBILE_BREAKPOINT && header.classList.contains("menu-open")) {
+      closeMobileMenu();
     }
   });
 
   document.addEventListener("click", (event) => {
-    if (window.innerWidth > 768) return;
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
     if (!header.classList.contains("menu-open")) return;
     if (header.contains(event.target)) return;
 
-    header.classList.remove("menu-open");
-    menuToggleButton.setAttribute("aria-expanded", "false");
+    closeMobileMenu();
   });
 }
 
 // Initialize interactive behaviors after the page finishes loading.
 window.addEventListener("scroll", toggleHeaderBackground);
 window.addEventListener("load", () => {
-  initThemeToggle();
   toggleHeaderBackground();
   initHeroBackgroundSlider();
-  initMobileExploreCardTap();
-  initMobileHomeProjectTap();
+  initMobilePreviewTap(exploreCards);
+  initMobilePreviewTap(homeProjectCards);
   initMobileMenuToggle();
 });
