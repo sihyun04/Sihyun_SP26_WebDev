@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Museum of Taste | Lobby</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="lobby-page">
+    <main class="museum-app" id="museum-app">
+
+      <!-- Corner navigation: just the exit button for now -->
+      <nav class="lobby-corner-nav">
+        <button class="nav-button" id="logout-button" type="button">Exit</button>
+      </nav>
+
+      <!-- Desk papers — all sheets share one vanishing point, hover lifts them up -->
+      <div class="lobby-desk">
+
+        <!-- Top: Search speech bubble, spans full width -->
+        <div class="desk-paper search-paper">
+          <div class="lobby-search-panel">
+            <p class="speech-question">Looking for a specific piece?</p>
+            <label class="lobby-search-box" for="lobby-search-input">
+              <input
+                type="search"
+                id="lobby-search-input"
+                placeholder="Search by title, artist, year, museum..."
+              />
+            </label>
+          </div>
+        </div>
+
+        <!-- Left paper: stats about the collection (counts filled in by JS) -->
+        <div class="desk-paper">
+          <div class="lobby-copy">
+            <p class="eyebrow">Welcome, <span id="visitor-label">Visitor</span></p>
+            <h2>Information</h2>
+
+            <div class="lobby-stats">
+              <div>
+                <span id="total-artworks">0</span>
+                <p>Artworks</p>
+              </div>
+              <div>
+                <span id="total-floors">4</span>
+                <p>Floors</p>
+              </div>
+              <div>
+                <span id="total-artists">0</span>
+                <p>Artists</p>
+              </div>
+              <div>
+                <span id="total-museums">0</span>
+                <p>Museums</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right paper: floor directory with filter tabs -->
+        <div class="desk-paper">
+          <aside class="museum-map" aria-label="Museum floor map">
+            <div class="map-heading">
+              <h3>Floor Directory</h3>
+            </div>
+
+            <!-- Floor cards injected here by renderLobbyFloorMap() -->
+            <div class="floor-map" id="lobby-floor-map"></div>
+
+            <!-- Switching this tab re-groups the floors by a different criterion -->
+            <div class="map-filter-tabs" role="tablist" aria-label="Filter map by">
+              <button class="map-filter-tab active" type="button" data-filter="favorite">Favorite</button>
+              <button class="map-filter-tab" type="button" data-filter="artist">Artist</button>
+              <button class="map-filter-tab" type="button" data-filter="year">Year</button>
+              <button class="map-filter-tab" type="button" data-filter="style">Style</button>
+              <button class="map-filter-tab" type="button" data-filter="museum">By Venue</button>
+              <button class="map-filter-tab" type="button" data-filter="visitYear">By Visit Year</button>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+
+      <!-- Search result cards appear here while the user is typing -->
+      <div class="lobby-search-results" id="lobby-search-results"></div>
+    </main>
+
+    <!-- Floating action button to open the upload modal -->
+    <button class="add-artwork-fab" id="open-upload" type="button" aria-label="Add new artwork to collection">
+      <span class="fab-icon" aria-hidden="true">+</span>
+      <span class="fab-label">Add Artwork</span>
+    </button>
+
+    <!-- Upload modal: lets the user pick photos and fill in details for each -->
+    <div class="modal hidden" id="upload-modal" aria-hidden="true">
+      <div class="modal-card upload-modal-card">
+        <button class="close-button" id="close-upload" type="button" aria-label="Close upload form">×</button>
+        <p class="eyebrow">Add to Collection</p>
+        <h2>Upload artwork photos</h2>
+
+        <form id="artwork-form" class="artwork-form">
+          <label for="artwork-image">Photos</label>
+          <!-- Multiple files allowed; each gets its own crop + metadata row -->
+          <input type="file" id="artwork-image" accept="image/*" multiple />
+
+          <div class="bulk-upload-list" id="bulk-upload-list" aria-live="polite">
+            <p class="upload-empty">Choose photos to add artwork details.</p>
+          </div>
+
+          <button class="primary-button" type="submit">Place on Wall</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Detail modal: shown when the user clicks an artwork card -->
+    <div class="modal hidden" id="detail-modal" aria-hidden="true">
+      <div class="modal-card detail-card">
+        <button class="close-button" id="close-detail" type="button" aria-label="Close artwork detail">×</button>
+        <!-- Left column: artwork image (or crop editor in edit mode) -->
+        <div class="detail-image" id="detail-image"></div>
+        <!-- Right column: title, metadata, edit fields, memo, and action buttons -->
+        <div class="detail-info">
+          <p class="eyebrow" id="detail-floor">Favorites Floor</p>
+          <div class="detail-title-row">
+            <h2 id="detail-title">Artwork Title</h2>
+            <button class="favorite-toggle" id="toggle-favorite" type="button" aria-label="Toggle favorite">☆</button>
+          </div>
+          <p id="detail-meta">Artist - Year - Museum</p>
+
+          <!-- Edit fields: hidden until the user hits "Edit" -->
+          <div class="detail-edit-grid" aria-label="Edit artwork information">
+            <label for="detail-title-input">
+              Title
+              <input type="text" id="detail-title-input" />
+            </label>
+            <label for="detail-artist-input">
+              Artist
+              <input type="text" id="detail-artist-input" />
+            </label>
+            <label for="detail-year-input">
+              Year
+              <input type="text" id="detail-year-input" />
+            </label>
+            <label for="detail-style-input">
+              Style
+              <input type="text" id="detail-style-input" />
+            </label>
+            <label for="detail-museum-input" class="detail-edit-wide">
+              Museum / Gallery
+              <input type="text" id="detail-museum-input" />
+            </label>
+          </div>
+
+          <label for="detail-note">Personal memo</label>
+          <textarea id="detail-note" rows="7"></textarea>
+
+          <div class="detail-actions">
+            <button class="danger-button" id="delete-artwork" type="button">Delete</button>
+            <button class="secondary-button" id="edit-detail" type="button">Edit</button>
+            <button class="primary-button" id="save-note" type="button">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

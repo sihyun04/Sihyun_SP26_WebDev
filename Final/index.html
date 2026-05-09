@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Museum of Taste | Login</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <section class="login-screen home-login" id="login-screen">
+      <!-- Background: two layered images, swapped when the door is clicked -->
+      <div class="home-background" aria-hidden="true">
+        <img src="img/HomeBackground_1.png" alt="" />
+        <img src="img/HomeBackground_3.png" alt="" />
+      </div>
+
+      <!-- Warm glow that animates around the door on entry -->
+      <div class="door-glow" aria-hidden="true"></div>
+      <!-- Invisible clickable area over the door in the image -->
+      <button class="door-hotspot" id="door-hotspot" type="button" aria-label="Enter the museum"></button>
+
+      <!-- Login panel: fades in after the door animation plays -->
+      <div class="library-entry">
+        <div class="login-panel">
+          <p class="eyebrow">My Museum</p>
+          <h1>Welcome back.</h1>
+          <p>Your collection is waiting</p>
+
+          <!-- Login / signup form — JS swaps between the two modes -->
+          <form id="login-form" class="login-form">
+            <label for="visitor-name">Name</label>
+            <input
+              type="text"
+              id="visitor-name"
+              name="visitor-name"
+              placeholder="Museum Founder"
+              autocomplete="name"
+            />
+
+            <label for="visitor-password">Password</label>
+            <input
+              type="password"
+              id="visitor-password"
+              name="visitor-password"
+              placeholder="Your private key"
+              autocomplete="current-password"
+            />
+
+            <button id="auth-submit" type="submit">Open Collection</button>
+
+            <!-- Toggle between sign-in and sign-up -->
+            <div class="auth-switch" aria-label="Choose login or signup">
+              <button class="auth-mode active" id="login-mode" type="button">Sign in</button>
+              <span class="auth-divider" aria-hidden="true">·</span>
+              <button class="auth-mode" id="signup-mode" type="button">Sign up</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

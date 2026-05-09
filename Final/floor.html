@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Museum of Taste | Exhibition Floor</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body class="floor-page">
+    <main class="museum-app" id="museum-app">
+      <section class="floor-section">
+
+        <!-- Top bar: back link on the left, exit on the right -->
+        <header class="floor-topbar">
+          <a class="floor-back-link" href="lobby.html" aria-label="Return to lobby">‹ Lobby</a>
+          <button class="nav-button" id="logout-button" type="button">Exit</button>
+        </header>
+
+        <!-- Main gallery room: wall background image changes with view count -->
+        <div class="gallery-room" aria-label="Museum wall gallery">
+
+          <!-- Left panel: dot indicators for switching between floor groups -->
+          <aside class="floor-left-panel">
+            <div class="floor-tabs" aria-label="Choose exhibition floor"></div>
+          </aside>
+
+          <!-- Tooltip that pops up on the right side when hovering a floor dot -->
+          <div class="floor-tooltip" id="floor-tooltip" aria-live="polite">
+            <p class="floor-tooltip-name"></p>
+            <p class="floor-tooltip-criteria"></p>
+            <p class="floor-tooltip-count"></p>
+          </div>
+
+          <!-- Artwork cards are rendered into this wall grid by JS -->
+          <div class="gallery-wall" id="gallery-wall"></div>
+
+          <!-- Right panel: zoom slider to change how many artworks are visible -->
+          <aside class="floor-right-panel">
+            <div class="zoom-control" aria-label="Adjust artwork size">
+              <button class="zoom-button" id="zoom-in" type="button" aria-label="Zoom in">+</button>
+              <input type="range" id="zoom-range" min="0" max="3" step="1" value="1" orient="vertical" />
+              <button class="zoom-button" id="zoom-out" type="button" aria-label="Zoom out">−</button>
+              <output id="zoom-value" for="zoom-range">4 works</output>
+            </div>
+          </aside>
+
+          <!-- Prev / next arrows to page through artworks on this floor -->
+          <div class="floor-wall-nav">
+            <button class="wall-arrow wall-arrow-left" type="button" aria-label="Previous wall">‹</button>
+            <button class="wall-arrow wall-arrow-right" type="button" aria-label="Next wall">›</button>
+          </div>
+
+        </div>
+
+        <!-- Search input: hidden visually but JS reads its value to filter the wall -->
+        <label class="floor-search-hidden" for="search-input">
+          <span>Search</span>
+          <input type="search" id="search-input" placeholder="artist, title, museum..." />
+        </label>
+
+      </section>
+    </main>
+
+    <!-- Floating action button to add a new artwork from this floor too -->
+    <button class="add-artwork-fab" id="open-upload" type="button" aria-label="Add new artwork to collection">
+      <span class="fab-icon" aria-hidden="true">+</span>
+      <span class="fab-label">Add Artwork</span>
+    </button>
+
+    <!-- Upload modal: same structure as lobby.html -->
+    <div class="modal hidden" id="upload-modal" aria-hidden="true">
+      <div class="modal-card upload-modal-card">
+        <button class="close-button" id="close-upload" type="button" aria-label="Close upload form">x</button>
+        <p class="eyebrow">Add to Collection</p>
+        <h2>Upload artwork photos</h2>
+
+        <form id="artwork-form" class="artwork-form">
+          <label for="artwork-image">Photos</label>
+          <input type="file" id="artwork-image" accept="image/*" multiple />
+
+          <div class="bulk-upload-list" id="bulk-upload-list" aria-live="polite">
+            <p class="upload-empty">Choose photos to add artwork details.</p>
+          </div>
+
+          <button class="primary-button" type="submit">Place on Wall</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Detail modal: same structure as lobby.html -->
+    <div class="modal hidden" id="detail-modal" aria-hidden="true">
+      <div class="modal-card detail-card">
+        <button class="close-button" id="close-detail" type="button" aria-label="Close artwork detail">x</button>
+        <div class="detail-image" id="detail-image"></div>
+        <div class="detail-info">
+          <p class="eyebrow" id="detail-floor">Favorites Floor</p>
+          <div class="detail-title-row">
+            <h2 id="detail-title">Artwork Title</h2>
+            <button class="favorite-toggle" id="toggle-favorite" type="button" aria-label="Toggle favorite">☆</button>
+          </div>
+          <p id="detail-meta">Artist - Year - Museum</p>
+
+          <!-- Edit grid: hidden until "Edit" is clicked -->
+          <div class="detail-edit-grid" aria-label="Edit artwork information">
+            <label for="detail-title-input">
+              Title
+              <input type="text" id="detail-title-input" />
+            </label>
+            <label for="detail-artist-input">
+              Artist
+              <input type="text" id="detail-artist-input" />
+            </label>
+            <label for="detail-year-input">
+              Year
+              <input type="text" id="detail-year-input" />
+            </label>
+            <label for="detail-style-input">
+              Style
+              <input type="text" id="detail-style-input" />
+            </label>
+            <label for="detail-museum-input" class="detail-edit-wide">
+              Museum / Gallery
+              <input type="text" id="detail-museum-input" />
+            </label>
+          </div>
+
+          <label for="detail-note">Personal memo</label>
+          <textarea id="detail-note" rows="7"></textarea>
+
+          <div class="detail-actions">
+            <button class="danger-button" id="delete-artwork" type="button">Delete</button>
+            <button class="secondary-button" id="edit-detail" type="button">Edit</button>
+            <button class="primary-button" id="save-note" type="button">Save Changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
